@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BRIX MiniApp</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="header-left">
+      <span class="logo">BRIX</span>
+      <span class="platform-badge" id="platformBadge">—</span>
+    </div>
+    <div class="header-right">
+      <span class="connection-status" id="connectionStatus">●</span>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="app-main">
+
+    <!-- Kullanici Bilgileri Kartlari -->
+    <section class="section">
+      <h2 class="section-title">Kullanici Bilgileri</h2>
+      <div class="info-grid">
+        <div class="info-card" data-fn="GetIdentity">
+          <div class="info-label">Kimlik</div>
+          <div class="info-value" id="identityDisplay">
+            <span class="placeholder">Bilgi almak icin tiklayin</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="fetchIdentity()">Bilgi Al</button>
+        </div>
+        <div class="info-card" data-fn="GetPhoneNumber">
+          <div class="info-label">Telefon</div>
+          <div class="info-value" id="phoneDisplay">
+            <span class="placeholder">Bilgi almak icin tiklayin</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="fetchPhoneNumber()">Bilgi Al</button>
+        </div>
+        <div class="info-card" data-fn="GetMailAddress">
+          <div class="info-label">E-Posta</div>
+          <div class="info-value" id="mailDisplay">
+            <span class="placeholder">Bilgi almak icin tiklayin</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="fetchMailAddress()">Bilgi Al</button>
+        </div>
+        <div class="info-card" data-fn="GetCustomerNumber">
+          <div class="info-label">Musteri No</div>
+          <div class="info-value" id="customerNumberDisplay">
+            <span class="placeholder">Bilgi almak icin tiklayin</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="fetchCustomerNumber()">Bilgi Al</button>
+        </div>
+        <div class="info-card" data-fn="GetCommercialCustomerNumber">
+          <div class="info-label">Ticari Musteri No</div>
+          <div class="info-value" id="commercialCustomerNumberDisplay">
+            <span class="placeholder">Bilgi almak icin tiklayin</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="fetchCommercialCustomerNumber()">Bilgi Al</button>
+        </div>
+        <div class="info-card" data-fn="GetLocation">
+          <div class="info-label">Konum</div>
+          <div class="info-value" id="locationDisplay">
+            <span class="placeholder">Bilgi almak icin tiklayin</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="fetchLocation()">Bilgi Al</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Harita & Odeme -->
+    <section class="section">
+      <h2 class="section-title">Aksiyonlar</h2>
+      <div class="action-grid">
+        <div class="action-card" data-fn="OpenMap">
+          <div class="action-icon">🗺️</div>
+          <div class="action-title">Harita Ac</div>
+          <div class="action-desc">Cihaz harita uygulamasinda konum acar</div>
+          <button class="btn btn-secondary" onclick="openMap()">Haritada Goster</button>
+        </div>
+        <div class="action-card" data-fn="sendPayment">
+          <div class="action-icon">💳</div>
+          <div class="action-title">Odeme Yap</div>
+          <div class="action-desc">Native odeme ekranini acar</div>
+          <button class="btn btn-accent" onclick="sendPayment()">Odeme Yap</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Odeme Sonucu -->
+    <section class="section" id="paymentSection" style="display:none;">
+      <h2 class="section-title">Odeme Sonucu</h2>
+      <div class="result-card" id="paymentResult">
+        <div class="result-content"></div>
+      </div>
+    </section>
+
+    <!-- Hata Log -->
+    <section class="section" id="errorSection" style="display:none;">
+      <h2 class="section-title">Hata</h2>
+      <div class="error-card" id="errorDisplay">
+        <div class="error-content"></div>
+      </div>
+    </section>
+
+    <!-- Debug Console -->
+    <section class="section">
+      <h2 class="section-title">Debug Konsolu</h2>
+      <div class="debug-console" id="debugConsole">
+        <div class="log-entry info">MiniApp baslatildi. Platform algilaniyor...</div>
+      </div>
+      <div class="debug-actions">
+        <button class="btn btn-ghost btn-sm" onclick="clearDebug()">Temizle</button>
+        <button class="btn btn-ghost btn-sm" onclick="checkBridge()">Bridge Kontrol</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="app-footer">
+    <p>BRIX MiniApp &copy; 2026 &mdash; SuperSDK Bridge v1.0</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="bridge.js"></script>
+</body>
+</html>

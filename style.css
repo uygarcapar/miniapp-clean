@@ -1,0 +1,412 @@
+/* ============================================================
+   BRIX MiniApp - SuperSDK Bridge Demo Styles
+   ============================================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  --brix-blue: #0E4B94;
+  --brix-navy: #002D5A;
+  --brix-blue-light: #F0F5FA;
+  --brix-bg: #FFFFFF;
+  --brix-bg-warm: #FDFBF7;
+  --brix-text: #181818;
+  --brix-neutral-card: #F6F4F0;
+  --brix-sale: #D93838;
+  --brix-success: #2E7D32;
+  --brix-warning: #ED6C02;
+  --brix-error: #D93838;
+  --brix-border: #E0E0E0;
+  --brix-radius: 12px;
+  --brix-radius-sm: 8px;
+  --brix-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --brix-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --brix-font: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--brix-font);
+  background: var(--brix-bg-warm);
+  color: var(--brix-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header --- */
+.app-header {
+  background: var(--brix-navy);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.platform-badge {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.connection-status {
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.connection-status.connected {
+  color: #4CAF50;
+}
+
+.connection-status.disconnected {
+  color: #FF5252;
+}
+
+/* --- Main Content --- */
+.app-main {
+  flex: 1;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* --- Sections --- */
+.section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brix-navy);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--brix-blue-light);
+}
+
+/* --- Info Grid (Kullanici Bilgileri) --- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.info-card {
+  background: var(--brix-bg);
+  border: 1px solid var(--brix-border);
+  border-radius: var(--brix-radius);
+  padding: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.info-card:hover {
+  box-shadow: var(--brix-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.info-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brix-blue);
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  min-height: 2em;
+}
+
+.info-value .placeholder {
+  color: #999;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.data-row {
+  padding: 2px 0;
+  font-size: 0.9rem;
+}
+
+.data-label {
+  font-weight: 600;
+  color: #555;
+  margin-right: 6px;
+}
+
+/* --- Action Grid (Harita & Odeme) --- */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .action-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.action-card {
+  background: var(--brix-bg);
+  border: 1px solid var(--brix-border);
+  border-radius: var(--brix-radius);
+  padding: 20px;
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.action-card:hover {
+  box-shadow: var(--brix-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.action-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.action-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.action-desc {
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+/* --- Result & Error Cards --- */
+.result-card,
+.error-card {
+  background: var(--brix-bg);
+  border-radius: var(--brix-radius);
+  padding: 16px;
+  border-left: 4px solid;
+}
+
+.result-card {
+  border-left-color: var(--brix-success);
+  background: #F1F8E9;
+}
+
+.error-card {
+  border-left-color: var(--brix-error);
+  background: #FFF5F5;
+}
+
+.result-content,
+.error-content {
+  font-size: 0.9rem;
+}
+
+/* --- Debug Console --- */
+.debug-console {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 12px;
+  border-radius: var(--brix-radius-sm);
+  max-height: 300px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.debug-console .log-entry {
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.debug-console .log-entry:last-child {
+  border-bottom: none;
+}
+
+.debug-console .log-entry.info {
+  color: #90CAF9;
+}
+
+.debug-console .log-entry.success {
+  color: #81C784;
+}
+
+.debug-console .log-entry.warn {
+  color: #FFD54F;
+}
+
+.debug-console .log-entry.error {
+  color: #EF9A9A;
+}
+
+.debug-console .log-time {
+  color: #666;
+  margin-right: 6px;
+}
+
+.debug-console .log-data {
+  color: #B0BEC5;
+  font-size: 0.72rem;
+  margin: 4px 0 4px 16px;
+  white-space: pre;
+}
+
+.debug-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--brix-radius-sm);
+  font-family: var(--brix-font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--brix-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0c3f7a;
+  box-shadow: 0 2px 8px rgba(14, 75, 148, 0.3);
+}
+
+.btn-secondary {
+  background: var(--brix-neutral-card);
+  color: var(--brix-text);
+  border: 1px solid var(--brix-border);
+}
+
+.btn-secondary:hover {
+  background: #e8e4de;
+}
+
+.btn-accent {
+  background: var(--brix-sale);
+  color: white;
+}
+
+.btn-accent:hover {
+  background: #c42e2e;
+  box-shadow: 0 2px 8px rgba(217, 56, 56, 0.3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brix-blue);
+  border: 1px solid var(--brix-border);
+  padding: 6px 14px;
+  font-size: 0.78rem;
+}
+
+.btn-ghost:hover {
+  background: var(--brix-blue-light);
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+}
+
+/* --- Footer --- */
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.78rem;
+  color: #999;
+  border-top: 1px solid var(--brix-border);
+  background: var(--brix-bg);
+}
+
+/* --- Scrollbar --- */
+.debug-console::-webkit-scrollbar {
+  width: 6px;
+}
+
+.debug-console::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.debug-console::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .app-main {
+    padding: 12px;
+  }
+
+  .app-header {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .info-card,
+  .action-card {
+    padding: 14px;
+  }
+}
